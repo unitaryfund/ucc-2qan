@@ -39,8 +39,8 @@ class BenchArch(object):
             physical_q_0 = qbits[0]
             physical_q_1 = qbits[1]
         else:
-            physical_q_0 = qbits[0].index
-            physical_q_1 = qbits[1].index
+            physical_q_0 = qbits[0]._index
+            physical_q_1 = qbits[1]._index
         r_0 = min(physical_q_0, physical_q_1)
         r_1 = max(physical_q_0, physical_q_1)
         return (r_0, r_1)
@@ -53,7 +53,7 @@ class BenchArch(object):
         instrs1q = {0: [], 1:[]}
         for instr, qbits, cbits in self.benchmark.data:
             if len(qbits) == 2:
-                qpairs.append((qbits[0].index, qbits[1].index))
+                qpairs.append((qbits[0]._index, qbits[1]._index))
                 instrs2q[self.zz_tuple(qbits)] = instr
             elif len(qbits) == 1:
                 if isinstance(instr, Barrier):
@@ -61,9 +61,9 @@ class BenchArch(object):
                 elif isinstance(instr, Measure):
                     continue
                 elif isinstance(instr, HGate):
-                    instrs1q[0].append((instr, qbits[0].index))
+                    instrs1q[0].append((instr, qbits[0]._index))
                 else:
-                    instrs1q[1].append((instr, qbits[0].index))
+                    instrs1q[1].append((instr, qbits[0]._index))
             for q in qbits:
                 if q not in all_qs:
                     all_qs.append(q)

@@ -40,7 +40,7 @@ class HeuristicMapper(BenchArch):
         vpmap = mapper.property_set["layout"].get_virtual_bits()
         init_map0 = {}
         for k,v in vpmap.items():
-            init_map0[k.index]=v
+            init_map0[k._index]=v
         init_map = fill_partial_mapping(init_map0, self.coupling_map)
         return init_map
 

@@ -9,7 +9,7 @@ from py2qan.scheduler import Scheduler
 from qiskit import QuantumCircuit
 from qiskit.quantum_info import Operator
 from qiskit.circuit.library.standard_gates import SwapGate, RZZGate
-from qiskit.extensions.unitary import UnitaryGate
+from qiskit.circuit.library import UnitaryGate
 from qiskit.converters import *
 
 
